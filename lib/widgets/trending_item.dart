@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_foodybite/util/const.dart';
+
 
 class TrendingItem extends StatefulWidget {
   final String img;
   final String title;
   final String address;
-  final String rating;
+
 
   TrendingItem({
     Key key,
     @required this.img,
     @required this.title,
     @required this.address,
-    @required this.rating,
+
   })
       : super(key: key);
 
@@ -50,54 +50,7 @@ class _TrendingItemState extends State<TrendingItem> {
                     ),
                   ),
 
-                  Positioned(
-                    top: 6.0,
-                    right: 6.0,
-                    child: Card(
-                      shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(4.0)),
-                      child: Padding(
-                        padding: EdgeInsets.all(2.0),
-                        child: Row(
-                          children: <Widget>[
-                            Icon(
-                              Icons.star,
-                              color: Constants.ratingBG,
-                              size: 10,
-                            ),
-
-                            Text(
-                              " ${widget.rating} ",
-                              style: TextStyle(
-                                fontSize: 10,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  Positioned(
-                    top: 6.0,
-                    left: 6.0,
-                    child: Card(
-                      shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(3.0)),
-                      child: Padding(
-                        padding: EdgeInsets.all(4.0),
-                        child:Text(
-                          " OPEN ",
-                          style: TextStyle(
-                            fontSize: 10,
-                            color: Colors.green,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
-                ],
+                   ],
               ),
 
               SizedBox(height: 7.0),

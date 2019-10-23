@@ -90,7 +90,6 @@ class _TrendingState extends State<Trending> {
                   img: restaurant["img"],
                   title: restaurant["title"],
                   address: restaurant["address"],
-                  rating: restaurant["rating"],
                 );
               },
             ),

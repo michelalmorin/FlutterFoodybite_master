@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_foodybite/screens/expansion_tile.dart';
-
 import 'package:flutter_foodybite/util/categories.dart';
-import 'package:flutter_foodybite/util/friends.dart';
+import 'package:flutter_foodybite/util/feedbacks.dart';
 import 'package:flutter_foodybite/util/requests.dart';
 import 'package:flutter_foodybite/widgets/slide_item.dart';
 import 'package:flutter_foodybite/widgets/trending_item.dart';
 import 'expansion_tile.dart';
+import 'sent1.dart';
 import 'form1.dart';
 
 class Home extends StatefulWidget {
@@ -15,10 +15,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home>{
+  int countValue = 1;
   final TextEditingController _searchControl = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+
     super.build(context);
     return Scaffold(
       appBar: PreferredSize(
@@ -84,6 +86,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home>{
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
+
                 Text(
                   "Requests",
                   style: TextStyle(
@@ -134,8 +137,9 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home>{
                       img: restaurant["img"],
                       title: restaurant["title"],
                       address: restaurant["address"],
-                      rating: restaurant["rating"],
+
                     ),
+
                   );
                 },
               ),
@@ -155,25 +159,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home>{
                   ),
                 ),
 
-                FlatButton(
-                  child: Text(
-                    "See all",
-                    style: TextStyle(
-//                      fontSize: 22,
-//                      fontWeight: FontWeight.w800,
-                      color: Theme.of(context).accentColor,
-                    ),
-                  ),
-                  onPressed: (){
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (BuildContext context){
-                          return form1() ;
-                        },
-                      ),
-                    );
-                  },
-                ),
+
               ],
             ),
 
@@ -196,13 +182,30 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home>{
                       borderRadius: BorderRadius.circular(8.0),
                       child: Stack(
                         children: <Widget>[
-                          Image.asset(
-                            cat["img"],
-                            height: MediaQuery.of(context).size.height/6,
-                            width: MediaQuery.of(context).size.height/6,
-                            fit: BoxFit.cover,
-                          ),
+                          GestureDetector(
+                            onTap: () {
+                  Navigator.of(context).push(
+                  MaterialPageRoute(
+                  builder: (BuildContext context){
+                  return expansion_tile();
+                  },
+                  ),
+                  );
+                  //Insert event to be fired up when button is clicked here
+                  //in this case, this increments our `countValue` variable by one.
+                  //setState(() => countValue += 1);
+                  },
+                            child: Image.asset(
+                              cat["img"],
+                              height: MediaQuery.of(context).size.height/6,
+                              width: MediaQuery.of(context).size.height/6,
+                              fit: BoxFit.cover,
+                            ),
 
+                          ),
+                          SizedBox(
+                            height: 60,
+                          ),
                           Container(
                             decoration: BoxDecoration(
                               gradient: LinearGradient(

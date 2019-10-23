@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_foodybite/util/requests.dart';
+import 'form1.dart';
 
 
 void main() => runApp(new MaterialApp(home: new expansion_tile(), debugShowCheckedModeBanner: false,),);
@@ -34,10 +36,22 @@ class _expansion_tileState extends State<expansion_tile> {
     for (String content in Request.contents)
       columnContent.add(
         new ListTile(
-          title: new Text(content, style: new TextStyle(fontSize: 18.0),),
-          leading: new Text (content, style: new TextStyle(fontSize: 18.0),
+          title: FlatButton(
+            child: new Text(content, style: new TextStyle(fontSize: 18.0),),
+            onPressed: (){
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context){
+                    return form1() ;
+                  },
+                ),
+              );
+            },
+          ),
+          leading: new Icon(Request.icon),
+
         ),
-      ),);
+      );
 
     return columnContent;
   }
@@ -46,7 +60,7 @@ class _expansion_tileState extends State<expansion_tile> {
 class Request {
   final String title;
   List<String> contents = [];
-  List<IconData> icon = [];
+  final IconData icon;
 
 
   Request({this.title, this.contents, this.icon});
@@ -54,15 +68,15 @@ class Request {
 
 List<Request> Requests = [
   new Request( title:'Facilities',
-    contents: ['Bathroom/Toilet Issue','Building Maintenance', 'Carpet/Flooring Issue', 'Furniture Issue'],
-    icon: [Icons.wc, Icons.accessible, Icons.favorite, Icons.lens],
+    contents: ['Ergonomic Evaluation','Building Maintenance', 'Carpet/Flooring Issue', 'Furniture Issue'],
+    icon: Icons.settings,
   ),
   new Request( title:'Tech Central',
-contents: ['Bathroom/Toilet Issue','Building Maintenance', 'Carpet/Flooring Issue', 'Furniture Issue'],
-icon: [Icons.wc, Icons.accessible],
+contents: ['Laptop','Desktop', 'Re-image', 'Dock Station'],
+    icon: Icons.phonelink,
   ),
   new Request( title:'Service Now',
-    contents: ['Bathroom/Toilet Issue','Building Maintenance', 'Carpet/Flooring Issue', 'Furniture Issue'],
-    icon: [Icons.wc, Icons.accessible],
+    contents: ['Database Access','RSA Token', 'PAC group'],
+    icon: Icons.power_settings_new,
   ),
 ];
